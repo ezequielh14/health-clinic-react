@@ -6,24 +6,28 @@ import Turns from "./pages/Turns";
 import Login from "./pages/session/Login";
 import Register from "./pages/session/Register";
 import { AuthProvider } from "./context/Index";
+import CreateTurns from "./pages/controlPanel/CreateTurns";
+import ListTurns from "./components/ListTurns";
 
 const App = () => {
     return (
         <>
-        <AuthProvider>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                {/* Por el momento Turns no esta diseñado */}
-                <Route path="/turns" element={<Turns />} />
+            <AuthProvider>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                    {/* Por el momento Turns no esta diseñado */}
+                    <Route path="/turns" element={<Turns />} />
+                    <Route path="/listTurns" element={<ListTurns />} />
 
-                {/* login routes */}
-                <Route path="/login" element={<Login /> } />
-                <Route path="/register" element={<Register /> } />
-
-            </Routes>
-        </AuthProvider>
+                    {/* Control Admin Panel */}
+                    <Route path="/createturn" element={<CreateTurns />} />
+                    {/* login routes */}
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                </Routes>
+            </AuthProvider>
         </>
     );
 };
