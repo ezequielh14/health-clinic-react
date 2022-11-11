@@ -6,11 +6,25 @@ import Turns from "./pages/Turns";
 import Login from "./pages/session/Login";
 import Register from "./pages/session/Register";
 import { AuthProvider } from "./context/Index";
+<<<<<<< HEAD
+import CreateTurns from "./pages/controlPanel/CreateTurns";
+=======
+>>>>>>> a5035cc8539c1f174acd0acabd570384ea632434
 import ListTurns from "./components/ListTurns";
 
 const App = () => {
     return (
         <>
+<<<<<<< HEAD
+            <AuthProvider>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                    {/* Por el momento Turns no esta diseñado */}
+                    <Route path="/turns" element={<Turns />} />
+                    <Route path="/listTurns" element={<ListTurns />} />
+=======
         <AuthProvider>
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -19,13 +33,15 @@ const App = () => {
                 {/* Por el momento Turns no esta diseñado */}
                 <Route path="/turns" element={<Turns />} />
                 <Route path="/listTurns" element={<ListTurns />} />
+>>>>>>> a5035cc8539c1f174acd0acabd570384ea632434
 
-                {/* login routes */}
-                <Route path="/login" element={<Login /> } />
-                <Route path="/register" element={<Register /> } />
-
-            </Routes>
-        </AuthProvider>
+                    {/* Control Admin Panel */}
+                    <Route path="/createturn" element={<CreateTurns />} />
+                    {/* login routes */}
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                </Routes>
+            </AuthProvider>
         </>
     );
 };
