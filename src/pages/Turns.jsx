@@ -15,6 +15,13 @@ const Turns = () => {
         }
     }, []);
 
-    return currentUser && <div>Turns</div>;
+    return (
+        currentUser && (
+            <>
+                <Navbar />
+                <FormTurns />
+            </>
+        )
+    );
 };
 export default Turns;
