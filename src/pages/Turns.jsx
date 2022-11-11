@@ -1,4 +1,12 @@
+import FormTurns from "../components/FormTurns";
+import Navbar from "../components/Navbar";
+
 const Turns = () => {
-    return <div>Turns</div>;
+  return (
+    <>
+      <Navbar />
+      <FormTurns />
+    </>
+  );
 };
 export default Turns;

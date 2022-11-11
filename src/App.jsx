@@ -6,6 +6,7 @@ import Turns from "./pages/Turns";
 import Login from "./pages/session/Login";
 import Register from "./pages/session/Register";
 import { AuthProvider } from "./context/Index";
+import ListTurns from "./components/ListTurns";
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
                 <Route path="/contact" element={<Contact />} />
                 {/* Por el momento Turns no esta diseñado */}
                 <Route path="/turns" element={<Turns />} />
+                <Route path="/listTurns" element={<ListTurns />} />
 
                 {/* login routes */}
                 <Route path="/login" element={<Login /> } />
