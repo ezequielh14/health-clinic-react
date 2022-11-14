@@ -8,6 +8,8 @@ import Register from "./pages/session/Register";
 import { AuthProvider } from "./context/Index";
 import CreateTurns from "./pages/controlPanel/CreateTurns";
 import ListTurns from "./components/ListTurns";
+import { MyTurns } from "./components/MyTurns";
+
 
 const App = () => {
     return (
@@ -20,6 +22,7 @@ const App = () => {
                     {/* Por el momento Turns no esta diseñado,  */}
                     <Route path="/turns" element={<Turns />} />
                     <Route path="/listTurns" element={<ListTurns />} />
+                    <Route path="/myTurns" element={<MyTurns />} />
 
                     {/* Control Admin Panel */}
                     <Route path="/createturn" element={<CreateTurns />} />
