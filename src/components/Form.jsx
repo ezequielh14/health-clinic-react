@@ -67,3 +67,7 @@ const Form = () => {
 };
 
 export default Form;
+
+import 'react-dropdown/style.css';
+
+
