@@ -22,16 +22,21 @@ const Form = () => {
             e.preventDefault();
             setFirstName(e.target.firstname.value);
             setLastName(e.target.lastname.value);
-            setDni(e.target.number.value);
+            setDni(e.target.dni.value);
             setBirthDay(e.target.date.value);
             setStreetAddress(e.target.street.value);
             setTelefono(e.target.phone.value);
             setEmail(e.target.email.value);
             setObraSocial(e.target.aporte.value);
             setMessageSent("¡Mensaje enviado!");
-            console.log(e.target.name.value);
+            console.log(e.target.firstname.value);
+            console.log(e.target.lastname.value);
+            console.log(e.target.dni.value);
+            console.log(e.target.date.value);
+            console.log(e.target.street.value);
+            console.log(e.target.phone.value);
             console.log(e.target.email.value);
-            console.log(e.target.message.value);
+            console.log(e.target.aporte.value);
             e.target.reset();
           }}
         >
