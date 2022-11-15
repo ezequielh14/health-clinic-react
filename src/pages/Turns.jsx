@@ -1,4 +1,27 @@
+import FormTurns from "../components/FormTurns";
+import Navbar from "../components/Navbar";
+
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/Index";
+
 const Turns = () => {
-    return <div>Turns</div>;
+    const { currentUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!currentUser) {
+            navigate("/login");
+        }
+    }, []);
+
+    return (
+        currentUser && (
+            <>
+                <Navbar />
+                <FormTurns />
+            </>
+        )
+    );
 };
 export default Turns;
