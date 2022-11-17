@@ -15,12 +15,36 @@ export const useFirestore = () => {
     const [data, setData] = useState([]);
     const [error, setError] = useState();
     const [loading, setLoading] = useState({});
+    const [isAdmin, setIsAdmin] = useState(false);
 
     const getTurn = async (statusTurn) => {
         try {
             setLoading((prev) => ({ ...prev, getTurn: true }));
             const docRef = collection(db, "turns");
             const q = query(docRef, where("status", "==", statusTurn));
+            const querySnapshot = await getDocs(q);
+            const dataDB = querySnapshot.docs.map((doc) => {
+                doc.data();
+                console.log(doc.id, " => ", doc.data());
+            });
+            setData(dataDB);
+        } catch (error) {
+            console.log(error);
+            setError(error.message);
+        } finally {
+            setLoading((prev) => ({ ...prev, getTurn: false }));
+        }
+    };
+
+    const getTurnByDni = async (statusTurn, userDni) => {
+        try {
+            setLoading((prev) => ({ ...prev, getTurn: true }));
+            const docRef = collection(db, "turns");
+            const q = query(
+                docRef,
+                where("status", "==", statusTurn),
+                where("userDni", "==", userDni)
+            );
             const querySnapshot = await getDocs(q);
             const dataDB = querySnapshot.docs.map((doc) => {
                 doc.data();
@@ -132,13 +156,14 @@ export const useFirestore = () => {
         }
     };
 
-    const updateTurnByUser = async (uuid, newStatus) => {
+    const updateTurnByUser = async (uuid, newStatus, userDni) => {
         try {
             setLoading((prev) => ({ ...prev, updateTurnByUser: true }));
             const docRef = doc(db, "turns", uuid);
             await updateDoc(docRef, {
                 status: newStatus,
                 iduser: authFire.currentUser.uid,
+                userDni: userDni,
             });
             setData(
                 data.map((item) =>
@@ -147,6 +172,7 @@ export const useFirestore = () => {
                               ...item,
                               status: newStatus,
                               iduser: authFire.currentUser.uid,
+                              userDni: userDni,
                           }
                         : item
                 )
@@ -156,6 +182,32 @@ export const useFirestore = () => {
             setError(error.message);
         } finally {
             setLoading((prev) => ({ ...prev, updateTurnByUser: false }));
+        }
+    };
+
+    const getUserByRole = async (uid) => {
+        try {
+            setLoading((prev) => ({ ...prev, getUserByRole: true }));
+            const docRef = collection(db, "users");
+            const q = query(
+                docRef,
+                where("uid", "==", uid),
+                where("role", "==", "admin")
+            );
+            const querySnapshot = await getDocs(q);
+            const dataDB = querySnapshot.docs.map((doc) => {
+                if (doc.data().role == "admin") {
+                    setIsAdmin(true);
+                } else {
+                    setIsAdmin(false);
+                }
+            });
+            console.log(dataDB);
+        } catch (error) {
+            console.log(error);
+            setError(error.message);
+        } finally {
+            setLoading((prev) => ({ ...prev, getUserByRole: false }));
         }
     };
 
@@ -169,5 +221,8 @@ export const useFirestore = () => {
         addTurn,
         updateTurn,
         updateTurnByUser,
+        getTurnByDni,
+        getUserByRole,
+        isAdmin,
     };
 };

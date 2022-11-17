@@ -9,12 +9,12 @@ import {
 } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAbtCEGj9oE9GPfPIr1ghEHqanCh0vcE80",
-    authDomain: "auth-health.firebaseapp.com",
-    projectId: "auth-health",
-    storageBucket: "auth-health.appspot.com",
-    messagingSenderId: "551759891632",
-    appId: "1:551759891632:web:a1fcf3a51f6cda2fa0bf75",
+    apiKey: "AIzaSyAJXj114vuX5dUY-7xGT2hpYrpyfpXVZb8",
+    authDomain: "health-clinic-turns.firebaseapp.com",
+    projectId: "health-clinic-turns",
+    storageBucket: "health-clinic-turns.appspot.com",
+    messagingSenderId: "650265008407",
+    appId: "1:650265008407:web:36633b09f1f7f7fc457f52",
 };
 
 export const firebaseApp = initializeApp(firebaseConfig); // initialize app
