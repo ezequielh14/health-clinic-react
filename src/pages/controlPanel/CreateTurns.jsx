@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 import { v4 as uuidv4 } from "uuid";
+import { logoutUser } from "../../configs/firebase";
 import { useFirestore } from "../../hooks/useFirestore";
 
 const CreateTurns = () => {
@@ -12,12 +13,7 @@ const CreateTurns = () => {
     const [site, setSite] = useState("");
     //const [uid, setUid] = useState("");
 
-    const { addTurn, getTurn } = useFirestore();
-
-    useEffect(() => {
-        console.log("getTurn");
-        getTurn("avaliable");
-    }, []);
+    const { addTurn } = useFirestore();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -46,6 +42,7 @@ const CreateTurns = () => {
     return (
         <>
             <div className="flex h-screen items-center justify-center bg-gray-50 dark:bg-gray-900">
+                <button onClick={() => logoutUser()}>Logout</button>
                 <div className="w-96 rounded-xl bg-white p-6 shadow dark:bg-gray-800">
                     <h2 className="text-center text-2xl font-semibold text-gray-700 dark:text-white sm:text-3xl">
                         Create New Turn
@@ -138,12 +135,6 @@ const CreateTurns = () => {
                             </button>
                         </div>
                     </form>
-                    <button
-                        type="submit"
-                        className="w-full rounded-lg border border-purple-700 px-5 py-2.5 text-center text-sm font-medium text-purple-700 hover:-translate-y-2 hover:bg-purple-800 hover:text-white hover:shadow-xl hover:transition-all hover:duration-300 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:border-purple-400 dark:text-purple-400 dark:hover:bg-purple-500 dark:hover:text-white dark:focus:ring-purple-900"
-                    >
-                        Save Turn
-                    </button>
                 </div>
             </div>
         </>

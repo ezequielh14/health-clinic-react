@@ -30,6 +30,7 @@ const Register = () => {
                     addUser({
                         uid: userCredential.user.uid,
                         email: email,
+                        role: "user",
                     })
                 );
                 console.log(userCredential.user.uid);

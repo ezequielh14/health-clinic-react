@@ -7,7 +7,11 @@ module.exports = {
         "./node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
     ],
     theme: {
-        extend: {},
+        extend: {
+            backgroundImage: {
+                "header-clinic": "url('./assets/images/doctors.jpg')",
+            },
+        },
     },
     plugins: [require("flowbite/plugin")],
 };
